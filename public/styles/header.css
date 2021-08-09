@@ -1,0 +1,18 @@
+header {
+  max-height: 400px;
+  width: 100%;
+  background-color: #a8acd4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #848be9;
+  background-image: url(http://www.transparenttextures.com/patterns/dark-brick-wall.png);
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.profile-image {
+  z-index:1
+}
+
