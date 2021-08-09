@@ -25,3 +25,7 @@ button {
   border: none;
   color: white;
 }
+
+.negCharCount {
+  color: rgb(189, 5, 5);
+}
