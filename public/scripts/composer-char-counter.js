@@ -1,19 +1,38 @@
 let charsRemaining = 140;
-const charCount = () => {
+
+const isBelowCount = () => charsRemaining < 0;
+
+const decCharCount = () => {
   charsRemaining -= 1;
-  if (charsRemaining > 0) {
-    return true;
-  }
-  return false;
+  return charsRemaining;
+};
+
+const incCharCount = () => {
+  charsRemaining += 1;
+  return charsRemaining;
 };
 
 $(document).ready(function () {
-  $("#tweet-text").on("input", function () {
-    const counter = $(this).closest(".new-tweet").find(".counter");
-    if (!charCount()) {
-      $(counter).addClass("negCharCount");
-      console.log("negitive count");
+  
+  $("#tweet-text").on("keydown", function (event) {
+    if (event.keyCode === 8) {
+      if(charsRemaining < 140){
+        incCharCount();        
+      }
+    } else{
+      decCharCount();
     }
+
+
+    console.log("", event.keyCode);
+    const counter = $(this).closest(".new-tweet").find(".counter");
+
+    if (isBelowCount()) {
+      $(counter).addClass("negCharCount");
+    } else if ($(counter).hasClass("negCharCount")) {
+      $(counter).removeClass("negCharCount");
+    }
+
     $(counter).val(charsRemaining);
   });
 });

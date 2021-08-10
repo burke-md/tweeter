@@ -12,6 +12,7 @@
   border-style: inset;
   border-width: 0 0 2px 0;
   width: 100%;
+  padding: 1rem;
 }
 
 #tweet-option {
@@ -29,3 +30,4 @@ button {
 .negCharCount {
   color: rgb(189, 5, 5);
 }
+

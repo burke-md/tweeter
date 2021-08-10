@@ -37,3 +37,75 @@ main {
  
 }
 
+article {
+  background: none;
+  border-style: solid;
+  border-width: 2px;
+  width: 100%;
+  margin: 10px 0 10px 0;
+  padding: 10px;
+  transition: box-shadow .3s ease-in-out;
+}
+
+article:hover {
+  
+  box-shadow: 8px 7px 10px 0px rgb(0 0 0 / 0.2);
+
+}
+
+.tweet-head {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+.tweet-body {
+  border-style: solid;
+  border-width: 0 0 2px 0;
+}
+.tweet-head section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%
+  }
+
+
+  .tweet-body {
+  padding-bottom: 1rem;
+  }
+  .tweet-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: .75rem;
+  
+  }
+  /* .footer-icons {
+
+  
+  } */
+.fa-flag{
+  color: #10028a;
+}
+.fa-flag:hover{
+  color: #f8d304;
+}
+
+.fa-retweet {
+  color: #10028a;
+}
+.fa-retweet:hover {
+  color: #f8d304;
+}
+
+.fa-heart {
+  color: #10028a;
+}
+.fa-heart:hover {
+  color: #f8d304;
+}
+
+
+
