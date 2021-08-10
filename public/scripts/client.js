@@ -38,6 +38,8 @@ const renderTweets = (obj) => {
   });
 };
 
+
+
 $(document).ready(function () {
   console.log("ready!");
 
@@ -45,6 +47,21 @@ $(document).ready(function () {
   $(".new-tweet").submit(function (event) {
     event.preventDefault();
     const data = $(event.target).serialize();
+    
+   
+
+    const target = $("#counter");
+    const counter = Number(target.val())
+    
+    if ( counter === 140 ){
+      alert("Nothing has been entered");
+      return
+    }
+    if ( counter <= 0 ){
+      alert("Too many chars");
+      return
+    }
+
     $.ajax({
       type: "POST",
       url: "/tweets",
