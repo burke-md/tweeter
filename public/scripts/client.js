@@ -4,31 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    user: {
-      name: "Newton",
-      avatars: "https://i.imgur.com/73hZDYK.png",
-      handle: "@SirIsaac",
-    },
-    content: {
-      text: "If I have seen further it is by standing on the shoulders of giants",
-    },
-    created_at: 1461116232227,
-  },
-  {
-    user: {
-      name: "Descartes",
-      avatars: "https://i.imgur.com/nlhLi3I.png",
-      handle: "@rd",
-    },
-    content: {
-      text: "Je pense , donc je suis",
-    },
-    created_at: 1461113959088,
-  },
-];
-
 const createTweetElement = (tweetData) => {
   const newTweet = $(`
   <article>
@@ -57,22 +32,19 @@ const createTweetElement = (tweetData) => {
   return newTweet;
 };
 
+const renderTweets = (obj) => {
+  obj.forEach((tweetObj) => {
+    $("#tweets-container").append(createTweetElement(tweetObj));
+  });
+};
+
 $(document).ready(function () {
   console.log("ready!");
 
-  const renderTweets = (obj) => {
-    obj.forEach((tweetObj) => {
-      $("#tweets-container").append(createTweetElement(tweetObj));
-    });
-  };
-  renderTweets(data);
-
-  //Adjust subimt behavior
-  $( ".new-tweet" ).submit(function( event ) {
-  
+  //Subimt behavior
+  $(".new-tweet").submit(function (event) {
     event.preventDefault();
     const data = $(event.target).serialize();
-
     $.ajax({
       type: "POST",
       url: "/tweets",
@@ -80,4 +52,12 @@ $(document).ready(function () {
     });
   });
 
+  //Load tweets from DB
+  const loadTweets = () => {
+    $.ajax("/tweets", { method: "GET" }).then(function (tweetsJSON) {
+      renderTweets(tweetsJSON);
+    });
+  };
+
+  loadTweets();
 });
