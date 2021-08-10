@@ -62,10 +62,22 @@ $(document).ready(function () {
 
   const renderTweets = (obj) => {
     obj.forEach((tweetObj) => {
-      console.log("new tweet has been constructed");
       $("#tweets-container").append(createTweetElement(tweetObj));
     });
   };
-
   renderTweets(data);
+
+  //Adjust subimt behavior
+  $( ".new-tweet" ).submit(function( event ) {
+  
+    event.preventDefault();
+    const data = $(event.target).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: data,
+    });
+  });
+
 });
