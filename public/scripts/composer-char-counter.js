@@ -23,8 +23,6 @@ $(document).ready(function () {
       decCharCount();
     }
 
-
-    console.log("", event.keyCode);
     const counter = $(this).closest(".new-tweet").find(".counter");
 
     if (isBelowCount()) {
