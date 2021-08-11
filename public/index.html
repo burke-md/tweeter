@@ -58,35 +58,35 @@
         </span>
       </span>
     </nav>
-
-    <header class="page-header">
-      <div class="profile-image">
-        <img src="/images/profile-hex.png" />
-      </div>
-
-      <div>
-        <h2>Mike B</h2>
-      </div>
-    </header>
-    <!-- Page-specific (main) content here -->
-    <main>
-      <section class="new-tweet">
-        <div id="error-message"></div>
-        <form action="/tweets" method="POST" id="tweet-form">
-          <textarea
+    <section class="media-container">
+      <header class="page-header">
+        <div class="profile-image">
+          <img src="/images/profile-hex.png" />
+        </div>     
+        <div>
+          <h2>Mike B</h2>
+        </div>
+      </header>
+      <main>
+        <section class="new-tweet">
+          <div id="error-message"></div>
+          <form action="/tweets" method="POST" id="tweet-form">
+            <textarea
             name="text"
             id="tweet-text"
             rows="1"
             placeholder="What are you humming about?"
-          ></textarea>
-          <div id="tweet-option">
-            <button type="submit" id="submit-btn">Tweet</button>
-            <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <section id="tweets-container"></section>        
+            ></textarea>
+            <div id="tweet-option">
+              <button type="submit" id="submit-btn">Tweet</button>
+              <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        <section id="tweets-container"></section>        
       </section>
     </main>
+  </section> 
   </body>
-</html>
+  </html>
+  

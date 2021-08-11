@@ -13,13 +13,12 @@ const incCharCount = () => {
 };
 
 $(document).ready(function () {
-  
   $("#tweet-text").on("keydown", function (event) {
     if (event.keyCode === 8) {
-      if(charsRemaining < 140){
-        incCharCount();        
+      if (charsRemaining < 140) {
+        incCharCount();
       }
-    } else{
+    } else {
       decCharCount();
     }
 

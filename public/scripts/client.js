@@ -1,9 +1,17 @@
 $(document).ready(function () {
-  $("#tweet-form").submit(submit);
   $("#error-message").hide();
+  $('.new-tweet').hide();
+
+  $("#tweet-form").submit(submit);
+  $('.double-angle-down').click(exposeTweetForm);
 
   loadTweets();
 });
+
+const exposeTweetForm = () => {
+  $('.new-tweet').toggle("slide");
+  $('#tweet-text').focus()
+}
 
 const escape = (str) => {
   let div = document.createElement("div");

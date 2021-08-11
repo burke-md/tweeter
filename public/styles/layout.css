@@ -6,7 +6,9 @@
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -18,23 +20,17 @@ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
-  display: flex;
+  font-family: "Source Sans Pro", sans-serif;
   flex-direction: column;
   align-items: center;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
 
 main {
   width: 90%;
   background-color: #f4f1ec;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
- 
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 article {
@@ -44,20 +40,17 @@ article {
   width: 100%;
   margin: 10px 0 10px 0;
   padding: 10px;
-  transition: box-shadow .3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 article:hover {
-  
   box-shadow: 8px 7px 10px 0px rgb(0 0 0 / 0.2);
-
 }
 
 .tweet-head {
   display: flex;
   justify-content: flex-start;
 }
-
 
 .tweet-body {
   border-style: solid;
@@ -67,26 +60,24 @@ article:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%
-  }
+  width: 100%;
+}
 
-
-  .tweet-body {
+.tweet-body {
   padding-bottom: 1rem;
-  }
-  .tweet-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: .75rem;
-  
-  }
+}
+.tweet-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: 0.75rem;
+}
 
-.fa-flag{
+.fa-flag {
   color: #10028a;
 }
-.fa-flag:hover{
+.fa-flag:hover {
   color: #f8d304;
 }
 
@@ -104,5 +95,13 @@ article:hover {
   color: #f8d304;
 }
 
-
-
+/*Desktop*/
+@media screen and (min-width: 1000px) {
+  .media-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .page-header {
+    margin: 2% 0% 0% 5%;
+  }
+}
