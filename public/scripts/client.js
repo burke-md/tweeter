@@ -1,3 +1,15 @@
+$(document).ready(function () {
+  $("#tweet-form").submit(submit);
+  $("#error-message").hide();
+
+  loadTweets();
+});
+
+const escape = (str) => {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 const createTweetElement = (tweetData) => {
   const newTweet = $(`
@@ -12,7 +24,7 @@ const createTweetElement = (tweetData) => {
   </section>
   </header>
   <section class="tweet-body">
-  ${tweetData.content.text}
+  ${escape(tweetData.content.text)}
   </section>
   <footer class="tweet-footer">
   ${timeago.format(tweetData.created_at)}
@@ -26,12 +38,6 @@ const createTweetElement = (tweetData) => {
   `);
   return newTweet;
 };
-
-$(document).ready(function () {
-  $(".new-tweet").submit(submit);
-
-  loadTweets();
-});
 
 const renderTweets = (obj) => {
   const container = $("#tweets-container");
@@ -49,22 +55,28 @@ const loadTweets = () => {
   });
 };
 
+//Submit tweet to DB w/ error checking
 const submit = function (event) {
   event.preventDefault();
   const data = $(event.target).serialize();
   const target = $("#counter");
   const counter = Number(target.val());
+  $("#error-message").hide();
 
   if (counter === 140) {
-    alert("Nothing has been entered");
+    $("#error-message").text("Have you nothing interesting to say?");
+    $("#error-message").slideDown();
     return;
   }
   if (counter <= 0) {
-    alert("Too many chars");
+    $("#error-message").text("Max Character Limit Exceeded");
+    $("#error-message").slideDown();
     return;
   }
 
   $.post("/tweets", data).then((data) => {
     loadTweets();
+
+    $("#tweet-text").val("");
   });
 };
