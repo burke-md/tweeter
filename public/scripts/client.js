@@ -1,8 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
 const createTweetElement = (tweetData) => {
   const newTweet = $(`
@@ -32,49 +27,44 @@ const createTweetElement = (tweetData) => {
   return newTweet;
 };
 
-const renderTweets = (obj) => {
-  obj.forEach((tweetObj) => {
-    $("#tweets-container").append(createTweetElement(tweetObj));
-  });
-};
-
-
-
 $(document).ready(function () {
-  console.log("ready!");
-
-  //Subimt behavior
-  $(".new-tweet").submit(function (event) {
-    event.preventDefault();
-    const data = $(event.target).serialize();
-    
-   
-
-    const target = $("#counter");
-    const counter = Number(target.val())
-    
-    if ( counter === 140 ){
-      alert("Nothing has been entered");
-      return
-    }
-    if ( counter <= 0 ){
-      alert("Too many chars");
-      return
-    }
-
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: data,
-    });
-  });
-
-  //Load tweets from DB
-  const loadTweets = () => {
-    $.ajax("/tweets", { method: "GET" }).then(function (tweetsJSON) {
-      renderTweets(tweetsJSON);
-    });
-  };
+  $(".new-tweet").submit(submit);
 
   loadTweets();
 });
+
+const renderTweets = (obj) => {
+  const container = $("#tweets-container");
+  container.empty();
+
+  obj.forEach((tweetObj) => {
+    $("#tweets-container").prepend(createTweetElement(tweetObj));
+  });
+};
+
+//Load tweets from DB
+const loadTweets = () => {
+  $.ajax("/tweets", { method: "GET" }).then(function (tweetsJSON) {
+    renderTweets(tweetsJSON);
+  });
+};
+
+const submit = function (event) {
+  event.preventDefault();
+  const data = $(event.target).serialize();
+  const target = $("#counter");
+  const counter = Number(target.val());
+
+  if (counter === 140) {
+    alert("Nothing has been entered");
+    return;
+  }
+  if (counter <= 0) {
+    alert("Too many chars");
+    return;
+  }
+
+  $.post("/tweets", data).then((data) => {
+    loadTweets();
+  });
+};
