@@ -72,7 +72,7 @@ const submit = function (event) {
   $("#error-message").hide();
 
   if (counter === 140) {
-    $("#error-message").text("Have you nothing interesting to say?");
+    $("#error-message").text("Please enter some content!");
     $("#error-message").slideDown();
     return;
   }
