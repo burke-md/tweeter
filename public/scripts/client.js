@@ -1,17 +1,17 @@
 $(document).ready(function () {
   $("#error-message").hide();
-  $('.new-tweet').hide();
+  $(".new-tweet").hide();
 
   $("#tweet-form").submit(submit);
-  $('.double-angle-down').click(exposeTweetForm);
+  $(".double-angle-down").click(exposeTweetForm);
 
   loadTweets();
 });
 
 const exposeTweetForm = () => {
-  $('.new-tweet').toggle("slide");
-  $('#tweet-text').focus()
-}
+  $(".new-tweet").toggle("slide");
+  $("#tweet-text").focus();
+};
 
 const escape = (str) => {
   let div = document.createElement("div");

@@ -1,4 +1,4 @@
-$(document).ready(function () { 
+$(document).ready(function () {
   $("#tweet-text").on("keydown", function (event) {
     //Deal with backspace/removing characters from field.
     if (event.keyCode === 8) {
@@ -8,19 +8,17 @@ $(document).ready(function () {
     } else {
       decCharCount();
     }
-    
+
     const counter = $(this).closest(".new-tweet").find(".counter");
     $(counter).val(charsRemaining);
-    
+
     if (isBelowCount()) {
       $(counter).addClass("negCharCount");
     } else if ($(counter).hasClass("negCharCount")) {
       $(counter).removeClass("negCharCount");
     }
-    
   });
 });
-
 
 let charsRemaining = 140;
 
