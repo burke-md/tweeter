@@ -47,16 +47,15 @@ const createTweetElement = (tweetData) => {
   return newTweet;
 };
 
-const renderTweets = (obj) => {
+const renderTweets = (arr) => {
   const container = $("#tweets-container");
   container.empty();
 
-  obj.forEach((tweetObj) => {
+  arr.forEach((tweetObj) => {
     $("#tweets-container").prepend(createTweetElement(tweetObj));
   });
 };
 
-//Load tweets from DB
 const loadTweets = () => {
   $.ajax("/tweets", { method: "GET" }).then(function (tweetsJSON) {
     renderTweets(tweetsJSON);
@@ -67,8 +66,8 @@ const loadTweets = () => {
 const submit = function (event) {
   event.preventDefault();
   const data = $(event.target).serialize();
-  const target = $("#counter");
-  const counter = Number(target.val());
+  const target = $("#counter").val();
+  const counter = Number(target);
   $("#error-message").hide();
 
   if (counter === 140) {
@@ -86,5 +85,6 @@ const submit = function (event) {
     loadTweets();
 
     $("#tweet-text").val("");
+    $(".counter").val("140");
   });
 };
