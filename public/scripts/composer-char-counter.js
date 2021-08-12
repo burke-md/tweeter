@@ -12,6 +12,7 @@ const incCharCount = () => {
   return charsRemaining;
 };
 
+
 $(document).ready(function () {
   $("#tweet-text").on("keydown", function (event) {
     if (event.keyCode === 8) {
@@ -23,6 +24,7 @@ $(document).ready(function () {
     }
 
     const counter = $(this).closest(".new-tweet").find(".counter");
+    $(counter).val(charsRemaining);
 
     if (isBelowCount()) {
       $(counter).addClass("negCharCount");
@@ -30,6 +32,5 @@ $(document).ready(function () {
       $(counter).removeClass("negCharCount");
     }
 
-    $(counter).val(charsRemaining);
   });
 });

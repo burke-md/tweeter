@@ -32,7 +32,9 @@ main {
   margin-left: 5%;
   margin-right: 5%;
 }
-
+.new-tweet {
+  margin-top: 10px;
+}
 article {
   background: none;
   border-style: solid;
@@ -96,12 +98,19 @@ article:hover {
 }
 
 /*Desktop*/
-@media screen and (min-width: 1000px) {
+@media only screen and (min-width: 1024px) {
   .media-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    
   }
+ 
+  main {
+   padding-top: 0;
+  }
+
   .page-header {
-    margin: 2% 0% 0% 5%;
+    margin-top: 10px;
   }
 }

@@ -22,28 +22,28 @@ const escape = (str) => {
 const createTweetElement = (tweetData) => {
   const newTweet = $(`
   <article>
-  <header class="tweet-head">
-  <figure>
-  <img src=${tweetData.user.avatars} alt="Profile Pic" />
-  </figure>
-  <section>
-  ${tweetData.user.name}
-  <span class="handle"> ${tweetData.user.handle}</span>
-  </section>
-  </header>
-  <section class="tweet-body">
-  ${escape(tweetData.content.text)}
-  </section>
-  <footer class="tweet-footer">
-  ${timeago.format(tweetData.created_at)}
-  <span class="footer-icons">
-  <i class="fas fa-flag"></i>
-  <i class="fas fa-retweet"></i>
-  <i class="fas fa-heart"></i>
-  </span>
-  </footer>
-  </article>
-  `);
+    <header class="tweet-head">
+      <figure>
+        <img src=${tweetData.user.avatars} alt="Profile Pic" />
+      </figure>
+      <section>
+        ${tweetData.user.name}
+        <span class="handle"> ${tweetData.user.handle}</span>
+      </section>
+    </header>
+    <section class="tweet-body">
+      ${escape(tweetData.content.text)}
+    </section>
+      <footer class="tweet-footer">
+        ${timeago.format(tweetData.created_at)}
+          <span class="footer-icons">
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+          </span>
+        </footer>
+      </article>
+    `);
   return newTweet;
 };
 
