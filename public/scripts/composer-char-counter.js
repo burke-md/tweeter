@@ -1,35 +1,18 @@
 $(document).ready(function () {
-  $("#tweet-text").on("keydown", function (event) {
-    //Deal with backspace/removing characters from field.
-    if (event.keyCode === 8) {
-      if (charsRemaining < 140) {
-        incCharCount();
-      }
-    } else {
-      decCharCount();
-    }
-
-    const counter = $(this).closest(".new-tweet").find(".counter");
-    $(counter).val(charsRemaining);
-
-    if (isBelowCount()) {
-      $(counter).addClass("negCharCount");
-    } else if ($(counter).hasClass("negCharCount")) {
-      $(counter).removeClass("negCharCount");
-    }
-  });
+  $("#tweet-text").on("input", characterCounter);
 });
 
-let charsRemaining = 140;
-
-const isBelowCount = () => charsRemaining < 0;
-
-const decCharCount = () => {
-  charsRemaining -= 1;
-  return charsRemaining;
+const characterCounter = function () {
+  const maxChar = 140;
+  const fieldCharCount = $(this).val().length;
+  const counter = $(this).closest(".new-tweet").find(".counter");
+  
+  $(counter).val(maxChar - fieldCharCount);
+  
+  if (fieldCharCount > maxChar) {
+    $(counter).addClass("negCharCount");
+  } else if ($(counter).hasClass("negCharCount")) {
+    $(counter).removeClass("negCharCount");
+  }
 };
 
-const incCharCount = () => {
-  charsRemaining += 1;
-  return charsRemaining;
-};

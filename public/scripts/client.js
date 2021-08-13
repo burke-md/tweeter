@@ -13,6 +13,7 @@ const exposeTweetForm = () => {
   $("#tweet-text").focus();
 };
 
+//Prevent XSS
 const escape = (str) => {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
